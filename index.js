@@ -1,23 +1,34 @@
-const inquirer = require('inquirer')
-const fs = require('fs')
+const fs = require('fs');
+const inquirer = require("inquirer");
+const { inherits } = require('util');
+const {Employee} = require('./lib/classes');
+const {Manager}= require('./lib/classes');
+const {Engineer} = require('./lib/classes');
+const {Intern} = require('./lib/classes');
+const Employees = [];
 
-function allEmployees(params) {
-    inquirer
-.prompt([
+const questions =
+    ([
+    {
+        type: 'list',
+        name: 'Title',
+        message: "What kind of employee do you want to add?",
+        choices: ["Manager", "Engineer", "Intern"]
+    },
     {
         type: 'input',
         message:'What is your name?',
-        name: 'name',
+        name: 'Name',
         },
     {
         type: 'input',
         message:'What is your ID?',
-        name: 'name',
+        name: 'ID',
         },
         {
     type: 'input',
     message:'What is your Email?',
-    name: 'name',
+    name: 'Email',
     },
 ])
 }
@@ -27,18 +38,15 @@ function teamManager(params) {
     {
         type: 'input',
         message:'What is your office number?',
-        name: 'name',
-        },
-    {
-        type: 'select',
-        message:'Do you want to add an engineer or intern?',
-        options: '[engineer], [intern], [No]',
-        },
-  
+        name: 'Office',
+        }
+    
 // if prompt options is engineer run that function
-
-
-])
+]).then(({Office})=>{
+    const manager = new Manager(Name, ID, Email, Title, Office)
+    Employees.push(manager)
+    addEmployee()
+})
 }
 
 function engineer(params) {
@@ -46,16 +54,15 @@ function engineer(params) {
 .prompt([
     {
         type: 'input',
-        message:'What is your office number?',
-        name: 'name',
-        },
-    {
-        type: 'input',
         message:'What is your github name?',
-        name: 'name',
-        },
+        name: 'github',
+        }
         
-])
+]).then(({Github})=>{
+    const engineer = new Engineer(Name, ID, Email, Title, Github)
+    Employees.push(engineer)
+    addEmployee();
+})
 }
 
 function intern(params) {
@@ -63,21 +70,30 @@ function intern(params) {
 .prompt([
     {
         type: 'input',
-        message:'What is your school?',
-        name: 'name',
-        },
-        
-])
+        message:'Where do you go to school?',
+        name: 'School',
+        }
+]).then(({School}) =>{
+    const intern = new Intern(Name, ID, Email, Title, School)
+    Employees.push(School)
+    addEmployee();
+})
 }
 
 function addEmployee(params) {
     inquirer
 .prompt([
     {
-        type: 'input',
+        type: 'list',
         message:'Do you want to add another employee?',
-        name: 'name',
+        name: 'New Employee',
+        choices: ["yes", "no"]
         },
+        {
+            type: 'select',
+            message:'Do you want to add an engineer or intern?',
+            options: '[engineer], [intern], [No]',
+            },
         
 ])
 }

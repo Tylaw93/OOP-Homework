@@ -31,8 +31,8 @@ const questions =
     name: 'Email',
     },
 ])
-}
-function teamManager(params) {
+
+function manager(params) {
     inquirer
 .prompt([
     {
@@ -86,20 +86,35 @@ function addEmployee(params) {
     {
         type: 'list',
         message:'Do you want to add another employee?',
-        name: 'New Employee',
-        choices: ["yes", "no"]
-        },
-        {
-            type: 'select',
-            message:'Do you want to add an engineer or intern?',
-            options: '[engineer], [intern], [No]',
-            },
-        
-])
+        name: 'newEmployee',
+        choices: ["Yes", "No"]
+        }
+]).then((answer)=> {
+    if(answer.newEmployee === "Yes"){
+        starterQuestions();
+    }
+    else{
+        finishedPage = makeHtml(Employees)
+    }
+    writeToFile("index.html", finishedPage)
+})
 }
 
-
-
+function starterQuestions(){
+    inquirer.prompt(questions)
+    .then((answers) => {
+        if(answers.Title === "Manager"){
+            manager(answers)
+        }
+        else if(answers.Title === "Engineer"){
+            engineer(answers)
+        }
+        else {
+            intern(answers)
+        }
+    })
+}
+starterQuestions()
 // options are team manager, engineer and intern.
 // team manager
 // employee ID

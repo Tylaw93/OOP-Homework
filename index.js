@@ -1,11 +1,11 @@
 const fs = require('fs');
 const inquirer = require("inquirer");
-const { inherits } = require('util');
-const {Employee} = require('./lib/classes');
 const {Manager}= require('./lib/classes');
 const {Engineer} = require('./lib/classes');
 const {Intern} = require('./lib/classes');
+const constructHtml = require('./src/template')
 const Employees = [];
+var finishedPage = ""
 
 const questions =
     ([
@@ -32,7 +32,7 @@ const questions =
     },
 ])
 
-function manager(params) {
+function manager({Name, ID, Email, Title}) {
     inquirer
 .prompt([
     {
@@ -49,7 +49,7 @@ function manager(params) {
 })
 }
 
-function engineer(params) {
+function engineer({Name, ID, Email, Title}) {
     inquirer
 .prompt([
     {
@@ -65,7 +65,7 @@ function engineer(params) {
 })
 }
 
-function intern(params) {
+function intern({Name, ID, Email, Title}) {
     inquirer
 .prompt([
     {
@@ -94,7 +94,7 @@ function addEmployee(params) {
         starterQuestions();
     }
     else{
-        finishedPage = makeHtml(Employees)
+        finishedPage = constructHtml(Employees)
     }
     writeToFile("index.html", finishedPage)
 })

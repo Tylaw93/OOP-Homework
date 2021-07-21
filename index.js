@@ -75,7 +75,7 @@ function intern({Name, ID, Email, Title}) {
         }
 ]).then(({School}) =>{
     const intern = new Intern(Name, ID, Email, Title, School)
-    Employees.push(School)
+    Employees.push(intern)
     addEmployee();
 })
 }
@@ -95,10 +95,11 @@ function addEmployee(params) {
     }
     else{
         finishedPage = constructHtml(Employees)
+        fs.writeFile("index.html", finishedPage, error =>{
+            if(error) throw error
+        })
     };
-    fs.writeFile("index.html", finishedPage, error =>{
-        if(error) throw error
-    })
+    
 })
 }
 

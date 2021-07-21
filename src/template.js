@@ -10,7 +10,7 @@ function constructHtml(data) {
     School = data[i].school;
     Email = data[i].email
 
-    switch (data[i].role) {
+    switch (data[i].title) {
         case "Manager":
         cards = cards.concat(`<div class="card" style="width: 18rem;">
         <div class="card-body bg-primary">
@@ -18,16 +18,17 @@ function constructHtml(data) {
             <h5 class="card-text text-white">${Title}</h5>
         </div>
             <ul class="list-group list-group-flush">
-          <li class="list-group-item">${ID}</li>
-          <li class="list-group-item">${OfficeNum}</li>
+          <li class="list-group-item"> ID: ${ID}</li>
+          <li class="list-group-item"> Office Number:${OfficeNum}</li>
           
         </ul>
         <div class="card-body">
-          <a href=mailto:${Email} class="card-link">${Email}</a>
-          <a href="#" class="card-link">Another link</a>
+          <a href=mailto:${Email} class="card-link"> Email: ${Email}</a>
         </div>
     </div>`);
         break;
+
+
     case "Engineer":
         cards = cards.concat(`<div class="card" style="width: 18rem;">
         <div class="card-body bg-primary">
@@ -36,7 +37,6 @@ function constructHtml(data) {
         </div>
             <ul class="list-group list-group-flush">
           <li class="list-group-item">${ID}</li>
-          <li class="list-group-item">${OfficeNum}</li>
           
         </ul>
         <div class="card-body">
@@ -46,7 +46,9 @@ function constructHtml(data) {
     </div>`);
         
         break;
-    default:
+
+
+    case "Intern":
         cards = cards.concat(`<div class="card" style="width: 18rem;">
         <div class="card-body bg-primary">
             <h4 class="card-title text white">${Name}</h4>
@@ -54,12 +56,10 @@ function constructHtml(data) {
         </div>
             <ul class="list-group list-group-flush">
           <li class="list-group-item">${ID}</li>
-          <li class="list-group-item">${OfficeNum}</li>
           
         </ul>
         <div class="card-body">
           <a href=mailto:${Email} class="card-link">${Email}</a>
-          <a href="https://github.com/${Git}" class="card-link">GitHub</a>
           <br>School: ${School}<br></br>        
           </div>
     </div>`);

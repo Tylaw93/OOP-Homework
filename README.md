@@ -17,5 +17,7 @@ This project is not open to edits.
 
 # Testing:
 From within the Test folder type "npm run test" and each test will run.
+Video of project to be view:
+https://drive.google.com/file/d/1ySeb_AI2LjIffEZ4nF07LdLUS96L67Cp/view
 
 For more information contact the author at github.com/tylaw93.

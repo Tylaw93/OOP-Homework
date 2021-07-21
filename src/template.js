@@ -36,11 +36,11 @@ function constructHtml(data) {
             <h5 class="card-text text-white">${Title}</h5>
         </div>
             <ul class="list-group list-group-flush">
-          <li class="list-group-item">${ID}</li>
+          <li class="list-group-item"> ID: ${ID}</li>
           
         </ul>
         <div class="card-body">
-          <a href=mailto:${Email} class="card-link">${Email}</a>
+          <a href=mailto:${Email} class="card-link">Email: ${Email}</a>
           <a href="https://github.com/${Git}" class="card-link">GitHub</a>
         </div>
     </div>`);
@@ -55,11 +55,11 @@ function constructHtml(data) {
             <h5 class="card-text text-white">${Title}</h5>
         </div>
             <ul class="list-group list-group-flush">
-          <li class="list-group-item">${ID}</li>
+          <li class="list-group-item"> ID: ${ID}</li>
           
         </ul>
         <div class="card-body">
-          <a href=mailto:${Email} class="card-link">${Email}</a>
+          <a href=mailto:${Email} class="card-link"> Email: ${Email}</a>
           <br>School: ${School}<br></br>        
           </div>
     </div>`);

@@ -93,4 +93,4 @@ function constructHtml(data) {
     </html>
             `;
         }
-module.export = constructHtml;
+module.exports = constructHtml;

@@ -95,8 +95,10 @@ function addEmployee(params) {
     }
     else{
         finishedPage = constructHtml(Employees)
-    }
-    writeToFile("index.html", finishedPage)
+    };
+    fs.writeFile("index.html", finishedPage, error =>{
+        if(error) throw error
+    })
 })
 }
 
